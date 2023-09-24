@@ -9,6 +9,7 @@ Language: GDScript
 Renderer: GLES 3 (particles are not available in GLES 2)
 
 ## Screenshots
+Here is the basic version of the game from Godot
 
 ![GIF from the documentation](https://docs.godotengine.org/en/latest/_images/dodge_preview.gif)
 
