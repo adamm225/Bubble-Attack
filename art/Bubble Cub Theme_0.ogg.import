@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bubble Cub Theme_0.ogg-caa70ad28d54f96b0a45621e4d3681b8.oggstr"
+
+[deps]
+
+source_file="res://art/Bubble Cub Theme_0.ogg"
+dest_files=[ "res://.import/Bubble Cub Theme_0.ogg-caa70ad28d54f96b0a45621e4d3681b8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

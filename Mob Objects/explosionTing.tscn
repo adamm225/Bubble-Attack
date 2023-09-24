@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://explosionTing.gd" type="Script" id=1]
+
+[node name="explosionTing" type="CPUParticles2D"]
+modulate = Color( 0.74902, 0.172549, 0.172549, 1 )
+scale = Vector2( 4, 4 )
+amount = 500
+lifetime = 2.0
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 5, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 20.0
+script = ExtResource( 1 )
+
+[node name="explTi" type="Timer" parent="."]
+wait_time = 0.7
+
+[connection signal="timeout" from="explTi" to="." method="_on_explTi_timeout"]

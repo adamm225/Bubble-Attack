@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://art/Bubble Cub Theme_0.ogg" type="AudioStream" id=5]
+[ext_resource path="res://art/gameover.wav" type="AudioStream" id=6]
+[ext_resource path="res://art/Memoraphile - Up in the Sky_0.ogg" type="AudioStream" id=7]
+[ext_resource path="res://art/Underwater Mountains.png" type="Texture" id=8]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+mob_scene = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.14902, 0.317647, 0.32549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Underwater Mountains" type="Sprite" parent="."]
+position = Vector2( 251.387, 342.756 )
+scale = Vector2( 0.369288, 0.66629 )
+texture = ExtResource( 8 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="MobTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 2.8
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Enemy_spawn_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="missleTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="bombTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 6.0
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 240, 450 )
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="MainScreenMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.0
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -20.0
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="Enemy_spawn_timer" to="." method="_on_Enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="missleTimer" to="." method="_on_missleTimer_timeout"]
+[connection signal="timeout" from="bombTimer" to="." method="_on_bombTimer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

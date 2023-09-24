@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Memoraphile - Up in the Sky_0.ogg-9ec2ade6087aa27ccf2b8f7c812ed57e.oggstr"
+
+[deps]
+
+source_file="res://art/Memoraphile - Up in the Sky_0.ogg"
+dest_files=[ "res://.import/Memoraphile - Up in the Sky_0.ogg-9ec2ade6087aa27ccf2b8f7c812ed57e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
